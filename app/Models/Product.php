@@ -12,5 +12,9 @@ class Product extends Model
 
     protected $guarded = [];
 
+    function onetoonerelationtable(){
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
+
 
 }

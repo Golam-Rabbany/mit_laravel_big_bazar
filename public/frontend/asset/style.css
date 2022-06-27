@@ -36,7 +36,9 @@ p{
     position: absolute;
     padding: 10px 20px;
 }
-
+.owl-carousel-brand .item img{
+    width: 68%!important;
+}
 .owl-sub-banner .sub-banner-span2{
     top: 20px;
     right: 105px;

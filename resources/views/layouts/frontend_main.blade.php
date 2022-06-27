@@ -37,69 +37,13 @@
 <body>
 
 
-  @php
-    $header = App\Models\Header::first();
-  @endphp
+@php
+  $header = App\Models\Header::first();
+@endphp
 
 
-<section class="mb-3">
-    <div class="container flex justify-between" style="border-bottom: 0.5px solid rgb(224, 224, 224)" >
-      <div class="mt-2 mb-2">
-        <ul class="flex">
-          <li class="px-2 py-1 text-sm"><a href=""><i class="fa-solid fa-flag"></i><span> Country</span></a></li>
-          <li class="px-2 py-1 text-sm"><a href=""><i class="fa-solid fa-indian-rupee-sign"></i><span> Currency</span></a></li>
-        </ul>
-      </div>
-      <div class="mt-2 mb-2">
-        <ul class="flex">
-          <li class="px-2 py-1 text-sm"><a href=""><i class="fa-solid fa-phone"></i><span> {{$header->number}}</span></a></li>
-          <li class="px-2 py-1 text-sm"><a href="{{route('login')}}"><i class="fa-solid fa-person-breastfeeding"></i><span> Login</span></a></li>
-          <li class="px-2 py-1 text-sm"><a href="{{route('register')}}"><i class="fa-solid fa-user-plus"></i><span> Sign Up</span></a></li>
-        </ul>
-      </div>
-    </div>
-</section>
-{{-- <svg  id="icon"   xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-</svg> --}}
 
-
-<section id="header">
-  <div class="container flex justify-between">
-    <div class="items-center mr-2">
-      <img src="{{asset('uploads/header/'.$header->logo) }}" alt="not found">
-    </div>
-    <div class="header-nav flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
-      <p class="leading-6">Shop by<br>category</p>
-      <i class="fa fa-bars ml-3 px-3 py-0.5 rounded text-3xl text-gray-50" style="background-color: #84c225"></i> 
-
-    </div>
-    <div class="header-search mr-2">
-      <div class="block">
-        <div class="flex items-center">
-          <input type="text" id="search-input" name="search" placeholder="Search" class="header-input md:w-20 border-1 outline-none rounded-sm  focus:ring focus:ring-violet-100  p-[8px] " style="width: 30rem" autocomplete="off">
-          <i class="fa-solid fa-magnifying-glass p-[14px] cursor-pointer rounded-r text-gray-50" style="background-color: #84c225;"></i>
-        </div>
-        <div class="flex text-uppercase my-1"> 
-          <div class="items-center mr-4"><i class="fa-regular fa-id-badge text-amber-600"></i><span class="text-amber-500"> bm offere</span></div>
-          <div class="items-center mr-4"><i class="fa-solid fa-certificate text-purple-600"></i><span class="text-purple-600"> bm express</span></div>
-          <div class="items-center mr-4"><i class="fa-regular fa-id-badge text-green-500"></i><span  class="text-green-500"> bm speciality</span></div>
-          <div class="items-center mr-4"><i class="fa-solid fa-sack-dollar text-blue-600"></i><span class="text-blue-600"> bm store</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="header-last flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
-      <i class="fa-solid fa-basket-shopping text-5xl py-1" style="color: #84c225;"></i>
-      <p class="leading-6 ml-3">My Basket <br>Item 2</p>
-    </div>
-
-    <div class="block md:hidden cursor-pointer"  >
-      <svg  id="icon"   xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-       <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-     </svg>
-</div>
-  </div>
-</section>
+@include('frontpage.frontendheader')
 
 
 <section id="owl-carousel-id">
@@ -250,17 +194,24 @@
       @endforeach
       <div class="col-lg-9 fruit-body">
         <div class="row  d-flex">
-          @foreach (App\Models\Store::all() as $store)
-
-        <div class="col-lg-4 col-md-4 col-sm-6 ">
-          <div class="fruit-img">
-            <p class="tag" style="margin-right: 10px;">
-              {{$store->offer}}<br>{{$store->quantity_way}}<br>off
-            </p>
-            <h5 class="">{{$store->store_name}}</h5>
-            <img class="d-flex mx-auto" src="{{asset('uploads/store/'.$store->store_photo)}}" alt="">
-          </div>
-        </div>   
+        @foreach (App\Models\Store::all() as $store)
+          <div class="col-lg-4 col-md-4 col-sm-6 ">
+            @if($store->offer)
+            <div class="fruit-img">
+              <img src="{{asset('frontend/asset/img/salebg.png')}}" alt="" style="position: absolute; top:0; right:24px">
+              <p class="tag" style="margin-right: 10px;">
+                {{$store->offer}}<br>{{$store->quantity_way}}<br>off
+              </p>
+              <h5 class="">{{$store->store_name}}</h5>
+              <img class="d-flex mx-auto" src="{{asset('uploads/store/'.$store->store_photo)}}" alt="">
+            </div>
+            @else
+            <div class="fruit-img">
+              <h5 class="">{{$store->store_name}}</h5>
+              <img class="d-flex mx-auto" src="{{asset('uploads/store/'.$store->store_photo)}}" alt="">
+            </div>
+            @endif
+          </div>   
         @endforeach
        
       </div>
@@ -307,7 +258,7 @@
   <h4 class="mb-2" style="text-align: center;">Our Popular Brands</h4>
   <div class="container">
     <div class="owl-carousel owl-carousel-brand owl-theme">
-      @foreach (App\Models\Logo::all() as $logos)
+      @foreach ($logo as $logos)
       <div class="item">
         <img src="{{asset('uploads/logo/'.$logos->logo)}}" alt="">
       </div>        
@@ -317,123 +268,9 @@
 </section>
 
 
-<section id="footer">
-  <div class="container">
-    <div class="row footer-row">
-      <div class="col-sm-6 col-xs-6 col-md-4 col-lg-1/5 mb-3">
-        <h4>My Account</h4>
-        <ul style="padding: 0;">
-          <li><a href="">My Account</a></li>
-          <li><a href="">Order History</a></li>
-          <li><a href="">Wish List</a></li>
-          <li><a href="">Newsletter</a></li>
-          <li><a href="">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-xs-6 col-md-4 col-lg-1/5 mb-3">
-        <h4>Information</h4>
-        <ul style="padding: 0;">
-          <li><a href="">About Us</a></li>
-          <li><a href="">Delevary Information</a></li>
-          <li><a href="">Privacy Policy</a></li>
-          <li><a href="">Termas & Conditions</a></li>
-          <li><a href="">Returns</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-xs-6 col-md-4 col-lg-1/5 mb-3">
-        <h4>Customlink</h4>
-        <ul style="padding: 0;">
-          <li><a href="">Career</a></li>
-          <li><a href="">About Us</a></li>
-          <li><a href="">Policy</a></li>
-          <li><a href="">Newsletter</a></li>
-          <li><a href="">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-xs-6 col-md-4 col-lg-1/5 mb-3">
-        <h4>Extras</h4>
-        <ul style="padding: 0;">
-          <li><a href="">Brands</a></li>
-          <li><a href="">Gift Certificate</a></li>
-          <li><a href="">Affilieats</a></li>
-          <li><a href="">Specials</a></li>
-          <li><a href="">Site Maps</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-xs-6 col-md-4 col-lg-1/5 mb-3">
-        <h4>Contacts</h4>
-        <ul style="padding: 0;">
-          <li><a href="">600, Big market Site Designs</a></li>
-          <li><a href="">custom Boltacusta avenue apt.</a></li>
-          <li><a href="">Mesa,California</a></li>
-          <li><a href="">info@customdesign.com</a></li>
-          <li><a href="">(+91) 12-3456-7890</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+@include('frontpage.frontendfooter')
 
 
-<section id="subscribe">
-  <div class="container">
-    <div class="row subscribe-row">
-      <div class="d-flex justify-content-between align-items-center subscribe-body">
-          <div class="d-flex subscribe-body-text">
-            <h3 class="">Subscribe for our offer news</h3>
-          </div>
-          <form action="{{route('subscribe.store')}}" method="POST">
-            @csrf
-          <div class="d-flex subscribe-body-input">
-            <input class="form-control " type="email" name="subscribe_message" id="" placeholder="Enter your email address">
-            <button class="btn subscribe-btn">Subscribe</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="payment">
-  <div class="container">
-    <div class="row row-payment d-flex">
-      <div class="col-lg-4  payment-col mb-3" >
-        <h4 class="" style="text-align: center;">Payment Option</h4>
-        <ul class="d-flex justify-content-center payment-card">
-          <li><a href=""><i class="fa-brands fa-cc-mastercard"></i></a></li>
-          <li><a href=""><i class="fa-brands fa-cc-discover"></i></a></li>
-          <li><a href=""><i class="fa-brands fa-cc-amex"></i></a></li>
-          <li><a href=""><i class="fa-brands fa-cc-paypal"></i></a></li>
-          <li><a href=""><i class="fa-brands fa-cc-visa"></i></a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4 payment-col mb-3" >
-        <h4 class=" mb-4" style="text-align: center;">Download App</h4>
-        <ul class="d-flex justify-content-center payment-app">
-          <li><a href=""><img src="frontend/asset/img/app-store.png" alt=""></a></li>
-          <li><a href=""><img src="frontend/asset/img/play-store.png" alt=""></a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4 payment-col mb-3" >
-        <h4 class="mb-4" style="text-align: center;">Social Media</h4>
-        <ul class="d-flex justify-content-center payment-logo">
-          @foreach (App\Models\Header::whereNotNull('social')->get() as $social)
-          <li><a href=""><i class="{{$social->social}}"></i></a></li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="last-footer">
-  <div class="container">
-    <div class="row last-footer-row">
-      <h6>Powered By OpenCart Big-market © 2022</h6>
-    </div>
-  </div>
-</section>
 
 
 

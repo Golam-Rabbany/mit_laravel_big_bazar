@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Frontend;
 use Illuminate\Http\Request;
+use App\Models\Logo;
 
 class FrontendController extends Controller
 {
@@ -15,9 +16,10 @@ class FrontendController extends Controller
      */
     public function index()
     {
+        $logo = Logo::all();
           $alldata=Category::with('product')->get();
           $grocery=Category::with('grocery')->get();
-        return view('layouts.frontend_main',compact('alldata','grocery'));
+        return view('layouts.frontend_main',compact('alldata','grocery','logo'));
     }
 
     /**

@@ -7,6 +7,7 @@
         <tr>
             <th scope="col">Id</th>
             <th>Category Name</th>
+            <th>Another Category using HasOne</th>
             <th scope="col">Product Title</th>
             <th>Product Image</th>
             <th>Main Price</th>
@@ -20,6 +21,7 @@
         <tr>
           <td>{{$my_product->id}}</td>
           <td>{{App\Models\Category::find($my_product->category_id)->category_name}}</td>
+          <td>{{$my_product->onetoonerelationtable->category_name}}</td>
           {{-- <td>{{print_r($my_product->$onetoonerelation)}}</td> --}}
           <td>{{$my_product->product_title}}</td>
           <td>
