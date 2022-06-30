@@ -6,14 +6,17 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function productDetails($id){
+        $products=Product::where('id',$id)->first();
+        return view('productPage',compact('products'));
+    }
+
+
     public function index()
     {
         $products = Product::all();
@@ -44,7 +47,11 @@ class ProductController extends Controller
         $products->product_title = $request->product_title;
         $products->sale_price = $request->sale_price;
         $products->main_price = $request->main_price;
+        $products->short_desc = $request->short_desc;
+        $products->long_desc = $request->long_desc;
+        $products->information = $request->information;
         $products->quantity = $request->quantity;
+        $products->sku =Str::slug($request->product_title)."-".Str::random(5);
 
         if($request->hasFile('product_photo')){
             $upload = $request->file('product_photo');
@@ -90,7 +97,6 @@ class ProductController extends Controller
         $product->product_title = $request->product_title;
         $product->sale_price = $request->sale_price;
         $product->main_price = $request->main_price;
-        $product->how_much = $request->how_much;
         $product->quantity = $request->quantity;
 
         if($request->hasFile('product_photo')){

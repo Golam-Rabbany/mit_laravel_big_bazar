@@ -87,4 +87,10 @@ class FrontendController extends Controller
     {
         //
     }
+
+    public function frontendproduct(){
+        return view('frontpage.frontend.frontend_product');
+    }
+
+
 }

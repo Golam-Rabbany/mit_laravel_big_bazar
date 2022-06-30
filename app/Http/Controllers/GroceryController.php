@@ -9,11 +9,12 @@ use Intervention\Image\Facades\Image;
 
 class GroceryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+    public function groceryProduct($id){
+        $grocerys = Grocery::where('id',$id)->first();
+        return view('frontpage.frontend.grocery',compact('grocerys'));
+    }
+
     public function index()
     {
         $my_grocery = Grocery::all();

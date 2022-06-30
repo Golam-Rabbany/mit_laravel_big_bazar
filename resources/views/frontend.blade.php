@@ -1,5 +1,5 @@
-@extends('frontend.layouts.master')
-@section('content')
+@extends('layouts.frontend_main')
+@section('my_frontpag')
 <section id="owl-carousel-id">
     <div class="owl-carousel owl-banner owl-theme">
       @foreach (App\Models\Banner::whereNotNull('banner_photo')->get() as $banner)
@@ -75,7 +75,7 @@
     <h4 class="mb-2" style="text-align: center;">Top Categories</h4>
     <div class="container">
       <div class="row justify-content-center">
-        @foreach (App\Models\Category::all() as $category)
+        {{-- @foreach ($alldata as $category)
         <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2 p-2">
           <div class="category-body category-col ">
             <h6 class="text-center text-align-center">{{$category->category_name}}</h6>
@@ -84,7 +84,7 @@
             </div>
           </div>
         </div>
-        @endforeach
+        @endforeach --}}
       </div>
     </div>
   </section>
@@ -97,9 +97,7 @@
         @foreach (App\Models\Product::all() as $product)
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mt-4">
           <div class="card product-card" style="width: 15rem;">
-           <a href="{{route('productDetails',$product->id)}}">
             <img src="{{asset('uploads/product/'.$product->product_photo)}}" class="card-img-top" alt="...">
-          </a>
             <div class="card-body product-body" >
               <div class="d-flex mb-2 justify-between" style="margin-bottom: -2rem;">
                 <span>{{$product->product_title}}</span>
@@ -185,11 +183,9 @@
         <div class="row  d-flex">
           @foreach (App\Models\Grocery::whereNotNull('grocery_photo')->get() as $grocery)
           <div class="col-lg-4 col-md-4 col-sm-6 ">
-            <div class="grocery-img mb-3">
-              <a href="{{route('singleGrocery',$grocery->id)}}">
+            <div class="grocery-img">
               <h5 class="">{{$grocery->grocery_name}}</h5>
               <img class="d-flex mx-auto" src="{{asset('uploads/grocery/'.$grocery->grocery_photo)}}" alt="">
-              </a>
             </div>
           </div>          
           @endforeach
@@ -207,13 +203,16 @@
     <h4 class="mb-2" style="text-align: center;">Our Popular Brands</h4>
     <div class="container">
       <div class="owl-carousel owl-carousel-brand owl-theme">
-        @foreach (App\Models\Logo::all() as $logos)
+        {{-- @foreach ($logo as $logos)
         <div class="item">
           <img src="{{asset('uploads/logo/'.$logos->logo)}}" alt="">
         </div>        
-        @endforeach
+        @endforeach --}}
       </div>
     </div>
   </section>
+  
 
-@endsection
+
+
+  @endsection

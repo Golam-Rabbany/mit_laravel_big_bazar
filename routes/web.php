@@ -15,17 +15,28 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DemoproductController;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('singlePage/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
+Route::get('singleGrocery/{id}', [GroceryController::class, 'groceryProduct'])->name('singleGrocery');
+
+Route::get('/productPage', function () {
+});
+
+
+
+
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-Route::resource('/frontpage', FrontendController::class);
-Route::get('/beets/frontpage',[FrontendController::class, 'beets'])->name('frontend.beets');
 
 
 Route::middleware(['auth'])->group(function(){
