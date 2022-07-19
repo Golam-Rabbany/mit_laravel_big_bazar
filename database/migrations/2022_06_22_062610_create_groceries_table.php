@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('grocery_name');
             $table->string('grocery_main_photo')->nullable();
             $table->string('grocery_photo');
+            $table->string('slug');
             $table->timestamps();
         });
     }

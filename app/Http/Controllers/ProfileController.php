@@ -100,19 +100,13 @@ class ProfileController extends Controller
         ]);
 
         if($request->hasFile('profile_photo')){
-            if(Auth::user()->profile_photo != 'profile_photo.jpg'){
-                $old_photo = public_path('uploads/profile/'.Auth::user()->profile_photo);
-                unlink($old_photo);
-            }
+            $contact = $request->file('profile_photo')->store('uploads/profile');
+            echo $contact;
+        
+         }
+       
+            // return back()->with('image_success', 'Profile Photo changes successfully');
 
-            $upload = $request->file('profile_photo');
-            $photo_name = Auth::id().".".$upload->getClientOriginalExtension();
-            Image::make($upload)->resize(150,150)->save(public_path('uploads/profile/'.$photo_name));
-            User::find(Auth::id())->update([
-            'profile_photo' => $photo_name,
-            ]);
-            return back()->with('image_success', 'Profile Photo changes successfully');
-        }
         }
 
         public function chng_password(Request $request){

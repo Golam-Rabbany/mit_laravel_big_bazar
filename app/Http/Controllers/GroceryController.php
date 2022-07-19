@@ -6,14 +6,11 @@ use App\Models\Grocery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class GroceryController extends Controller
 {
    
-    public function groceryProduct($id){
-        $grocerys = Grocery::where('id',$id)->first();
-        return view('frontpage.frontend.grocery',compact('grocerys'));
-    }
 
     public function index()
     {
@@ -42,6 +39,7 @@ class GroceryController extends Controller
         $grocery = new Grocery();
         $grocery->category_id = $request->category_id;
         $grocery->grocery_name = $request->grocery_name;
+        $grocery->slug = Str::slug($request->grocery_name."-".Str::random(4));
         if($request->hasFile('grocery_main_photo')){
             $uploaded = $request->file('grocery_main_photo');
             $extention=$uploaded->getClientOriginalName();

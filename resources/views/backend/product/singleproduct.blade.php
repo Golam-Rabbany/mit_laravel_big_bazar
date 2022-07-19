@@ -106,6 +106,24 @@
     </div>
 </section>
 
+<section id="category">
+    <h4 class="mb-2" style="text-align: center;">Related Grocery</h4>
+    <div class="container">
+      <div class="row justify-content-center">
+        @foreach ($related_products as $related_product)
+        <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2 p-2">
+          <div class="category-body category-col ">
+            <h6 class="text-center text-align-center">{{$related_product->product_title}}</h6>
+            <div class="w-100 d-flex justify-content-center">
+              <img class="mx-auto" src="{{asset('uploads/product/'.$related_product->product_photo)}}" alt="">
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
+
 
 @endsection
 

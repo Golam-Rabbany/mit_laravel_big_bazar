@@ -11,10 +11,10 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
 
-    public function productDetails($id){
-        $products=Product::where('id',$id)->first();
-        return view('productPage',compact('products'));
-    }
+    // public function productDetails($id){
+    //     $products=Product::where('id',$id)->first();
+    //     return view('productPage',compact('products'));
+    // }
 
 
     public function index()
@@ -124,4 +124,5 @@ class ProductController extends Controller
         $product->delete();
         return back();
     }
+
 }

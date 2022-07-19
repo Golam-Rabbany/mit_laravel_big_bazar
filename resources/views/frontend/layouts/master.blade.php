@@ -92,7 +92,7 @@
       </div>
       <div class="header-last flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
         <i class="fa-solid fa-basket-shopping text-5xl py-1" style="color: #84c225;"></i>
-        <p class="leading-6 ml-3">My Basket <br>Item 2</p>
+        <p class="leading-6 ml-3">My Basket <br>Item <span>2</span></p>
       </div>
   
       <div class="block md:hidden cursor-pointer"  >

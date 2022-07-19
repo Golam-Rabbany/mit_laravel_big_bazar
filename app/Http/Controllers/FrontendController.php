@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Demo;
+use App\Models\Demoproduct;
 use App\Models\Frontend;
+use App\Models\Grocery;
 use Illuminate\Http\Request;
 use App\Models\Logo;
+use App\Models\Product;
 
 class FrontendController extends Controller
 {
@@ -90,6 +94,32 @@ class FrontendController extends Controller
 
     public function frontendproduct(){
         return view('frontpage.frontend.frontend_product');
+    }
+
+    public function productDetails($sku){
+        $products = Product::where('sku', $sku)->firstOrFail();
+        $related_products = Product::where('category_id', $products->category_id)->where('id', '!=', $products->id)->get();
+        return view('backend.product.singleproduct',compact('products','related_products'));
+    }
+
+    public function groceryProduct($slug){
+        $grocerys = Grocery::where('slug', $slug)->firstOrFail();
+        $related_grocerys = Grocery::where('category_id', $grocerys->category_id)->where('id', '!=', $grocerys->id)->get();
+        return view('backend.grocery.singleGrocery',compact('grocerys','related_grocerys'));
+
+    }
+
+
+
+    public function allproduct($id){
+        $alldata = Category::where('id',$id)->with('product')->first();
+     
+        return view('backend.product.allproduct',compact('alldata'));
+    }
+
+    public function catProduct($id){
+        $data = Demo::where('id',$id)->with('demoproduct')->first();
+        return view('backend.demo.singledemoproduct',compact('data'));
     }
 
 

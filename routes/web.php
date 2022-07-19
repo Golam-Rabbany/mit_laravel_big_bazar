@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
@@ -23,15 +22,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('singlePage/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
-Route::get('singleGrocery/{id}', [GroceryController::class, 'groceryProduct'])->name('singleGrocery');
+//cat product
+Route::get('product-show/{id}', [FrontendController::class, 'allproduct'])->name('product.allproduct');
+    
+//demo cat product
+Route::get('demo/product/{id}', [FrontendController::class, 'catProduct'])->name('demo.product');
+
+// Route::get('product/details/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
+//single product
+Route::get('product/single/{sku}', [FrontendController::class, 'productDetails']);
+Route::get('singleGrocery/{slug}', [FrontendController::class, 'groceryProduct'])->name('singleGrocery');
 
 Route::get('/productPage', function () {
 });
-
-
-
-
 
 
 Route::get('/dashboard', function () {
@@ -47,6 +50,8 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/category', CategoryController::class);
     
     Route::resource('/product', ProductController::class);
+   
+   
     
     Route::resource('/store', StoreController::class);
     
@@ -59,12 +64,12 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/subscribe', SubscribeController::class);
 
     Route::resource('/profile', ProfileController::class);
-Route::post('/profile_photo', [ProfileController::class, 'profile_photo'])->name('profile.photo');
-Route::post('/profile/changepassword', [ProfileController::class, 'chng_password'])->name('profile.chng_password');
+    Route::post('/profile_photo', [ProfileController::class, 'profile_photo'])->name('profile.photo');
+    Route::post('/profile/changepassword', [ProfileController::class, 'chng_password'])->name('profile.chng_password');
 
-Route::resource('/demo', DemoController::class);
+    Route::resource('/demo', DemoController::class);
 
-Route::resource('/demoproduct', DemoproductController::class);
+    Route::resource('/demoproduct', DemoproductController::class);
 
 });
 

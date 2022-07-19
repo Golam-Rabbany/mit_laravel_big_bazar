@@ -10,7 +10,8 @@ class Demo extends Model
 {
     use HasFactory;
 
-    public function demoProduct(){
+    public function demoproduct(){
         return $this->hasMany(Demoproduct::class, 'category_id');
     }
+
 }

@@ -80,7 +80,9 @@
           <div class="category-body category-col ">
             <h6 class="text-center text-align-center">{{$category->category_name}}</h6>
             <div class="w-100 d-flex justify-content-center">
-              <img class="mx-auto" src="{{asset('uploads/category/'.$category->category_photo)}}" alt="">
+              <a href="{{route('product.allproduct',$category->id)}}" style="text-decoration: none;">
+                <img class="mx-auto" src="{{asset('uploads/category/'.$category->category_photo)}}" alt="">
+              </a>
             </div>
           </div>
         </div>
@@ -96,10 +98,9 @@
       <div class="row">
         @foreach (App\Models\Product::all() as $product)
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mt-4">
+          <a href="{{url('product/single')}}/{{$product->sku}}" style="text-decoration: none">
           <div class="card product-card" style="width: 15rem;">
-           <a href="{{route('productDetails',$product->id)}}">
             <img src="{{asset('uploads/product/'.$product->product_photo)}}" class="card-img-top" alt="...">
-          </a>
             <div class="card-body product-body" >
               <div class="d-flex mb-2 justify-between" style="margin-bottom: -2rem;">
                 <span>{{$product->product_title}}</span>
@@ -121,9 +122,10 @@
                 <input type="number" value="{{$product->quantity}}" class="product-input ml-3">
                 <button class="product-button ml-4">Add</button>
               </div>
-              </div>
+            </div>
             
           </div>
+          </a>
         </div>        
         @endforeach
       </div>
@@ -186,18 +188,36 @@
           @foreach (App\Models\Grocery::whereNotNull('grocery_photo')->get() as $grocery)
           <div class="col-lg-4 col-md-4 col-sm-6 ">
             <div class="grocery-img mb-3">
-              <a href="{{route('singleGrocery',$grocery->id)}}">
+              <a href="{{route('singleGrocery',$grocery->slug)}}">
               <h5 class="">{{$grocery->grocery_name}}</h5>
               <img class="d-flex mx-auto" src="{{asset('uploads/grocery/'.$grocery->grocery_photo)}}" alt="">
               </a>
             </div>
-          </div>          
+          </div>
           @endforeach
         </div>
         </div>
         <div  class="grocery-button">
           <button>View All</button>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="category">
+    <h4 class="mb-2" style="text-align: center;">Demo Categories</h4>
+    <div class="container">
+      <div class="row justify-content-center">
+        @foreach (App\Models\Demo::all() as $dem)
+        <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2 p-2">
+          <div class="category-body category-col ">
+            <a href="{{route('demo.product',$dem->id)}}">
+              <h6 class="text-center text-align-center">{{$dem->category}}</h6>
+            </a>
+          </div>
+        </div>
+        @endforeach
       </div>
     </div>
   </section>

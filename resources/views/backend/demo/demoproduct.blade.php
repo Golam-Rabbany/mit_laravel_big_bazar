@@ -22,7 +22,7 @@
         </div>
         <div class="mt-3">
             <label class="form-label" for="">Add Product</label>
-            <input type="text" class="form-control" name="demoproduct">
+            <input type="text" class="form-control" name="demo_product">
         </div>
         <div class="mt-3">
             <button type="submit" class="btn btn-success">Submit</button>

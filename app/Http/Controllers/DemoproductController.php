@@ -40,7 +40,7 @@ class DemoproductController extends Controller
     {
         $demoproduct = new Demoproduct();
         $demoproduct->category_id = $request->category_id;
-        $demoproduct->demoproduct = $request->demoproduct;
+        $demoproduct->demo_product = $request->demo_product;
         $demoproduct->save();
         return back();
     }
