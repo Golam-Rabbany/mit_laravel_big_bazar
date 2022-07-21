@@ -13,7 +13,7 @@ class CartController extends Controller
   
     public function index()
     {
-        echo Session::all();
+        return Session::get('cart');
     }
 
 
