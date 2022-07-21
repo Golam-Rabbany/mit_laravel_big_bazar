@@ -56,7 +56,7 @@ class ProductController extends Controller
         if($request->hasFile('product_photo')){
             $upload = $request->file('product_photo');
             $photo_name = time().".".$upload->getClientOriginalExtension();
-            Image::make($upload)->save(public_path('uploads/product/'.$photo_name));
+            Image::make($upload)->resize(224, 224)->save(public_path('uploads/product/'.$photo_name));
             $products->product_photo = $photo_name;
         }
         $products->save();
@@ -106,7 +106,7 @@ class ProductController extends Controller
             }
             $upload = $request->file('product_photo');
             $photo_name = time().".".$upload->getClientOriginalExtension();
-            Image::make($upload)->save(public_path('uploads/product/'.$photo_name));
+            Image::make($upload)->fit(224, 224)->save(public_path('uploads/product/'.$photo_name));
             $product->product_photo = $photo_name;
         }
         $product->update();

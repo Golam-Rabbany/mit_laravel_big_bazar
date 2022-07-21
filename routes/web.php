@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Route;
@@ -22,15 +23,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 //cat product
 Route::get('product-show/{id}', [FrontendController::class, 'allproduct'])->name('product.allproduct');
-    
+Route::get('show/product/{id}', [FrontendController::class, 'productshow'])->name('show.product');
 //demo cat product
 Route::get('demo/product/{id}', [FrontendController::class, 'catProduct'])->name('demo.product');
 
 // Route::get('product/details/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
+
 //single product
-Route::get('product/single/{sku}', [FrontendController::class, 'productDetails']);
+Route::get('product/single/{sku}', [FrontendController::class, 'productDetails'])->name('singleProduct');
 Route::get('singleGrocery/{slug}', [FrontendController::class, 'groceryProduct'])->name('singleGrocery');
 
 Route::get('/productPage', function () {
@@ -71,9 +75,18 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('/demoproduct', DemoproductController::class);
 
+    //add to cart
+    Route::post('cart/add', [CartController::class, 'store'])->name('cart.add');
+
 });
 
 
+
+
+Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
+
+// cart
+Route::resource('cart',CartController::class);
 
 
 

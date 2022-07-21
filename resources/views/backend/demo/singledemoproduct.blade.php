@@ -10,7 +10,7 @@
           <div class="card product-card mt-4" style="width: 15rem;">
               <div class="card-body product-body" >
               <div class="d-flex mb-2 justify-between" style="margin-bottom: -2rem;">
-                  <span><a href="">{{$datas->demo_product??''}}</a></span>
+                  <span><a href="{{route('product.allproduct',$datas->id)}}">{{$datas->demo_product??''}}</a></span>
                   <div class="float-end ml-3">
                   <span style="color:red">$</span><span  style="color:red"><s>23</s></span>
                   <span class="ml-1">$453</span><span></span>

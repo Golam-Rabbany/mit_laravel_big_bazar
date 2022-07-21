@@ -69,20 +69,19 @@
 <section id="header">
     <div class="container flex justify-between">
       <div class="items-center mr-2">
-        <img src="{{asset('uploads/header/'.$header->logo) }}" alt="not found">
+        <img src="{{asset('uploads/header/'.$header->logo) }}" class="img-fluid mb-2" alt="not found">
       </div>
       <div class="header-nav flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
         <p class="leading-6">Shop by<br>category</p>
-        <i class="fa fa-bars ml-3 px-3 py-0.5 rounded text-3xl text-gray-50" style="background-color: #84c225"></i> 
+        <i class="fa fa-bars ml-3 px-3 py-0.5 rounded text-2xl text-gray-50" style="background-color: #84c225"></i> 
   
       </div>
       <div class="header-search mr-2">
         <div class="block">
           <div class="flex items-center">
-            <input type="text" id="search-input" name="search" placeholder="Search" class="header-input md:w-20 border-1 outline-none rounded-sm  focus:ring focus:ring-violet-100  p-[8px] " style="width: 30rem" autocomplete="off">
-            <i class="fa-solid fa-magnifying-glass p-[14px] cursor-pointer rounded-r text-gray-50" style="background-color: #84c225;"></i>
+            <input type="text" id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg" autocomplete="off">            <i class="fa-solid fa-magnifying-glass p-[11px] cursor-pointer rounded-r text-gray-50" style="background-color: #84c225;"></i>
           </div>
-          <div class="flex text-uppercase my-1"> 
+          <div id="search-bm" class="flex text-uppercase my-1"> 
             <div class="items-center mr-4"><i class="fa-regular fa-id-badge text-amber-600"></i><span class="text-amber-500"> bm offere</span></div>
             <div class="items-center mr-4"><i class="fa-solid fa-certificate text-purple-600"></i><span class="text-purple-600"> bm express</span></div>
             <div class="items-center mr-4"><i class="fa-regular fa-id-badge text-green-500"></i><span  class="text-green-500"> bm speciality</span></div>
@@ -91,15 +90,10 @@
         </div>
       </div>
       <div class="header-last flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
-        <i class="fa-solid fa-basket-shopping text-5xl py-1" style="color: #84c225;"></i>
-        <p class="leading-6 ml-3">My Basket <br>Item <span>2</span></p>
+        <i class="fa-solid fa-basket-shopping text-3xl py-1" style="color: #84c225;"></i>
+        <p class="leading-6 ml-3">My Basket <br>Item <span>0</span></p>
       </div>
-  
-      <div class="block md:hidden cursor-pointer"  >
-        <svg  id="icon"   xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-       </svg>
-    </div>
+
     </div>
 </section>
 

@@ -1,3 +1,6 @@
+{{-- clik category to show all product  --}}
+
+
 @extends('frontend.layouts.master')
 @section('content')
 
@@ -11,7 +14,7 @@
                 <img src="{{asset('uploads/product/'.$data->product_photo)}}" class="card-img-top" alt="...">
                 <div class="card-body product-body" >
                 <div class="d-flex mb-2 justify-between" style="margin-bottom: -2rem;">
-                    <span><a href="">{{$data->product_title}}</a></span>
+                    <span><a href="{{route('singleProduct',$data->sku)}}">{{$data->product_title}}</a></span>
                     <div class="float-end ml-3">
                     <span style="color:red">$</span><span  style="color:red"><s>{{$data->main_price}}</s></span>
                     <span class="ml-1">$</span><span>{{$data->sale_price}}</span>

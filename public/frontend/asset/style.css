@@ -29,6 +29,16 @@ p{
        width: 20px;
     }
 }
+@media(max-width: 700px){
+    #search-input{
+        width: 250px;
+    }
+}
+@media(max-width: 768px){
+    #search-bm{
+        display: none;
+    }
+}
 
 
 
@@ -159,8 +169,7 @@ p{
     border:none; 
     background:#84c225;
     color: #fff;
-    height: 28px;
-    font-size: 13px;
+    font-size: 15px;
 }
 #product .product-button:hover{
     background: #e5e5e5;

@@ -1,4 +1,8 @@
+{{-- single product page --}}
+
+
 @extends('frontend.layouts.master')
+
 @section('content')
 <style>
     .single_button button:hover{
@@ -107,7 +111,7 @@
 </section>
 
 <section id="category">
-    <h4 class="mb-2" style="text-align: center;">Related Grocery</h4>
+    <h4 class="mb-2 fs-3" style="text-align: center;">Related Product</h4>
     <div class="container">
       <div class="row justify-content-center">
         @foreach ($related_products as $related_product)
@@ -122,7 +126,7 @@
         @endforeach
       </div>
     </div>
-  </section>
+</section>
 
 
 @endsection

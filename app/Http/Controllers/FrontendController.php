@@ -122,5 +122,9 @@ class FrontendController extends Controller
         return view('backend.demo.singledemoproduct',compact('data'));
     }
 
+    public function productshow(){
+        return view('backend.product.singleproduct');
+    }
+
 
 }

@@ -1,14 +1,14 @@
 @extends('frontend.layouts.master')
 @section('content')
-<section id="owl-carousel-id">
-    <div class="owl-carousel owl-banner owl-theme">
-      @foreach (App\Models\Banner::whereNotNull('banner_photo')->get() as $banner)
-      <div class="item">
-        <img src="{{asset('uploads/banner/'.$banner->banner_photo)}}" alt="">
+  <section id="owl-carousel-id">
+      <div class="owl-carousel owl-banner owl-theme">
+        @foreach (App\Models\Banner::whereNotNull('banner_photo')->get() as $banner)
+        <div class="item">
+          <img src="{{asset('uploads/banner/'.$banner->banner_photo)}}" alt="">
+        </div>
+        @endforeach
       </div>
-      @endforeach
-    </div>
-  </section>
+  </section> 
   
   <section class="mt-4">
     <div class="container">
@@ -98,9 +98,10 @@
       <div class="row">
         @foreach (App\Models\Product::all() as $product)
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mt-4">
-          <a href="{{url('product/single')}}/{{$product->sku}}" style="text-decoration: none">
           <div class="card product-card" style="width: 15rem;">
+            <a href="{{url('product/single')}}/{{$product->sku}}" style="text-decoration: none">
             <img src="{{asset('uploads/product/'.$product->product_photo)}}" class="card-img-top" alt="...">
+          </a>
             <div class="card-body product-body" >
               <div class="d-flex mb-2 justify-between" style="margin-bottom: -2rem;">
                 <span>{{$product->product_title}}</span>
@@ -117,15 +118,26 @@
                   <option value="">9kg</option>
                 </select>
               </div>
-              <div class="d-flex">
-                <label for="" class="" >Qty</label>
-                <input type="number" value="{{$product->quantity}}" class="product-input ml-3">
-                <button class="product-button ml-4">Add</button>
-              </div>
+              <form action="{{route('cart.store')}}" method="POST">
+                @csrf
+
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                  <input type="hidden" name="product_title" value="{{$product->product_title}}">
+                  <input type="hidden" name="sale_price" value="{{$product->sale_price}}">
+
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <input type="number" name="quantity" value="1" class="product-input pl-2 mt-2">
+                  </div>
+                  <div class="">
+                    <button type="submit" class="btn-sm product-button mt-2">Add</button>
+                  </div>
+
+                </div>
+              </form>
             </div>
             
           </div>
-          </a>
         </div>        
         @endforeach
       </div>
