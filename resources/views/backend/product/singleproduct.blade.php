@@ -51,7 +51,23 @@
                         <p class=" text-gray-500 text-xl">{{$products->short_desc}}</p>
                     </div>
                     <div class="mt-3 flex single_button  items-center">
-                        <button type="submit" class="bg-red-500 text-gray-100 text-xl px-20 uppercase rounded py-2.5">Add to Card</button>
+                        <form action="{{route('cart.store')}}" method="POST">
+                            @csrf
+            
+                            <input type="hidden" name="product_id" value="{{$products->id}}">
+                              <input type="hidden" name="product_title" value="{{$products->product_title}}">
+                              <input type="hidden" name="sale_price" value="{{$products->sale_price}}">
+            
+                            <div class="d-flex justify-content-between">
+                              <div>
+                                <input type="hidden" name="quantity" value="{{$products->quantity}}" class="product-input pl-2 mt-2">
+                              </div>
+                              <div class="">
+                                <button type="submit" class="bg-red-500 text-gray-100 text-xl px-20 uppercase rounded py-2.5">Add to Card</button>
+                              </div>
+            
+                            </div>
+                          </form>
                         <i class="fa-solid fa-heart px-6 py-2.5 text-xl ml-4 bg-gray-900 text-white rounded cursor-pointer  hover:bg-red-500 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"></i>
                         <i class="fa-solid fa-rotate px-6 py-2.5 text-xl ml-4 bg-gray-900 text-white rounded cursor-pointer  hover:bg-red-500 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"></i>
                     </div>

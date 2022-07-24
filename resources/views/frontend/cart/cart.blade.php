@@ -25,7 +25,7 @@
                     @foreach($carts as $data)
                   <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$data['product']->product_title}}</td>
+                    <td><a href="" style="text-decoration: none">{{$data['product']->product_title}}</a></td>
                     
                     <td>
                         <img src="{{asset('uploads/product/'.$data['product']->product_photo)}}" width="100px" height="100px" alt="">

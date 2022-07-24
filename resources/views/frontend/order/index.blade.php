@@ -78,13 +78,27 @@
                 <h2 class="text-white fs-4 mt-3 mb-2">Shipping Delivery</h2>
                 <form action="{{route('order.store')}}" method="POST">
                   @csrf
+                <div class="d-flex">
+                  <div class="p-2">
+                    <label for="" class="text-warning">Shipping Address</label><br>
                     <input class="mb-3" name="address" style="padding: 4px 5px; background: white" type="text" placeholder="Shipping Address">
-                    <input class="mb-3" name="name" style="padding: 4px 5px; background: white" type="text" placeholder="Name">
-                    <input class="mb-3" name="email" style="padding: 4px 5px; background: white" type="email" placeholder="Email">
+                    @error('address')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="p-2">
+                    <label for="" class="text-warning">Phone Number</label><br>
                     <input class="mb-3" name="phone" style="padding: 4px 5px; background: white" type="number" placeholder="Phone Number">
+                    @error('phone')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                  </div>
+                </div>
+                    {{-- <input class="mb-3" name="name" style="padding: 4px 5px; background: white" type="text" placeholder="Name"> --}}
+                    {{-- <input class="mb-3" name="email" style="padding: 4px 5px; background: white" type="email" placeholder="Email"> --}}
                     
                     <div class="form-button col-md-12 text-center">
-                        <button type="submit" class="btn">Order</button>
+                        <button type="submit" class="btn bg-info text-white text-lg">Order</button>
                     </div>
                 </form>
         </div>

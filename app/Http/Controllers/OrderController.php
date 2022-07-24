@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -39,12 +40,19 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
+        $this->validate($request, [
+            'address'=>'required',
+            'phone'=>'required',
+        ]);
+
         $orders = new Order();
         $orders->address = $request->address;
-        $orders->name = $request->name;
-        $orders->email = $request->email;
+        $orders->name = Auth::user()->name;
+        $orders->email = Auth::user()->email;
         $orders->phone = $request->phone;
         $orders->save();
+
+        return back();
     }
 
     /**
