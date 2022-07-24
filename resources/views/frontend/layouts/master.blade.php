@@ -91,7 +91,11 @@
       </div>
       <div class="header-last flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
         <i class="fa-solid fa-basket-shopping text-3xl py-1" style="color: #84c225;"></i>
-        <p class="leading-6 ml-3">My Basket <br>Item <span>0</span></p>
+       
+        <a href="{{route('cart.add')}}">
+          <p class="leading-6 ml-3">My Basket <br>Item <span>@if(Session::has('cart')){{count(Session::get('cart'))}}@else 0 @endif</span></p>
+     
+        </a>
       </div>
 
     </div>

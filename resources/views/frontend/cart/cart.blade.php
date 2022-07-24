@@ -37,14 +37,20 @@
                     </td>
 
                     <td class="">
-                        <i class="fa-solid fa-trash p-2 fs-3 cart-delete-btn" style="color:rgb(155, 2, 2); cursor: pointer;"></i>
+                            <form action="{{route('cart.destroy',$data['product_id'])}}" method="post">
+                                @csrf 
+                                @method('delete')
+                         <button type="submit" onclick="return confirm('Do you Want to Delete'))"> 
+                              <i class="fa-solid fa-trash p-2 fs-3 cart-delete-btn" style="color:rgb(155, 2, 2); cursor: pointer;"></i>
+                         </button>
+                    </form>
                     </td>
                   </tr>
                   @endforeach
                   @else
                   <h1>Your Cart Is Empty</h1>
-                        
                   @endif
+                  
                 </tbody>
             </table>
         </div>

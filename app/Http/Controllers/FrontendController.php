@@ -96,12 +96,14 @@ class FrontendController extends Controller
         return view('frontpage.frontend.frontend_product');
     }
 
+    //single product
     public function productDetails($sku){
         $products = Product::where('sku', $sku)->firstOrFail();
         $related_products = Product::where('category_id', $products->category_id)->where('id', '!=', $products->id)->get();
         return view('backend.product.singleproduct',compact('products','related_products'));
     }
 
+    //single grocery
     public function groceryProduct($slug){
         $grocerys = Grocery::where('slug', $slug)->firstOrFail();
         $related_grocerys = Grocery::where('category_id', $grocerys->category_id)->where('id', '!=', $grocerys->id)->get();
@@ -110,7 +112,7 @@ class FrontendController extends Controller
     }
 
 
-
+    //category_product
     public function allproduct($id){
         $alldata = Category::where('id',$id)->with('product')->first();
      
@@ -125,6 +127,7 @@ class FrontendController extends Controller
     public function productshow(){
         return view('backend.product.singleproduct');
     }
+
 
 
 }

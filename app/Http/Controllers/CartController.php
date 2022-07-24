@@ -13,18 +13,18 @@ class CartController extends Controller
   
     public function index()
     {
-        echo Session::all();
+        return Session::get('cart');
     }
 
 
     public function create()
     {
-        //
+
     }
 
     public function store(Request $request)
     {
-      
+    //   return Session::get('cart');
         if ($request->session()->has('cart')) {
             foreach (Session::get('cart') as $cart_row) {
                 if ($cart_row['product_id'] == $request->product_id) {
@@ -59,7 +59,7 @@ class CartController extends Controller
         $carts= collect($cart)->map(function ($data) use ($products) {
             $data['product'] = $products[$data['product_id']];
             return $data;
-        }); 
+        });
 
 
         return view('frontend.cart.cart',compact('carts'));
@@ -80,6 +80,10 @@ class CartController extends Controller
  
     public function destroy($id)
     {
-        //
+        Session::put('cart', array_filter(Session::get('cart', []), function ($item) use ($id) {
+            return $item['product_id'] != $id;
+        }));
+
+        return redirect()->back()->with('delete');
     }
 }

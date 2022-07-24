@@ -112,7 +112,7 @@
     <section id="last-footer">
         <div class="container">
         <div class="row last-footer-row">
-            <h6>Powered By OpenCart Big-market © 2022</h6>
+            <h6>Powered By MMIT Soft Ltd © 2022</h6>
         </div>
         </div>
     </section>

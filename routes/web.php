@@ -14,6 +14,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DemoproductController;
+use App\Http\Controllers\OrderController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -89,6 +90,8 @@ Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
 Route::resource('cart',CartController::class);
 
 
+//order
+Route::resource('/order', OrderController::class);
 
 
 //demo
