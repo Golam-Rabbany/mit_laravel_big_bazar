@@ -43,17 +43,13 @@
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella
-                                Alela!</span></a>
-                    </div>
 
                     <div class="clearfix"></div>
 
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="{{ asset('backend/dashboard/images/img.jpg') }}" alt="..."
+                            <img src="{{ asset('uploads/profile/'.Auth::user()->profile_photo) }}" alt="..."
                                 class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
@@ -75,6 +71,9 @@
                                         <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                                     </ul>
                                 </li>
+
+                                <li><a href=""><i class="fa-solid fa-arrow-up-9-1"></i>&emsp;Orders</a></li>
+
                                 <li><a><i class="fa fa-table"></i>Banner<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{route('banner.index')}}">View Banner</a></li>

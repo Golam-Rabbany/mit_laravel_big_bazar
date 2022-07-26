@@ -13,6 +13,7 @@ class CartController extends Controller
   
     public function index()
     {
+       
         return Session::get('cart');
     }
 
@@ -50,9 +51,8 @@ class CartController extends Controller
 
     public function show($id)
     {
-         
-        $cart = Session::get('cart', []);
 
+     $cart = Session::get('cart', []);
         $products = Product::select(['id','product_title','sale_price','product_photo'])
             ->whereIn('id', array_column($cart, 'product_id'))->get()->keyBy('id');
 
@@ -85,5 +85,9 @@ class CartController extends Controller
         }));
 
         return redirect()->back()->with('delete');
+    }
+
+    public function updatecart(){
+        return Session::get('cart');
     }
 }

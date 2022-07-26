@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('phone');
+            $table->string('total_cost');
+            $table->string('payment_method');
+            $table->string('delivary_method');
             $table->timestamps();
         });
     }

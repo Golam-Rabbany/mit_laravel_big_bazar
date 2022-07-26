@@ -99,7 +99,7 @@
         @foreach (App\Models\Product::all() as $product)
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mt-4">
           <div class="card product-card" style="width: 15rem;">
-            <a href="{{url('product/single')}}/{{$product->sku}}" style="text-decoration: none">
+          <a href="{{route('product.details',$product->id)}}" style="text-decoration: none">
             <img src="{{asset('uploads/product/'.$product->product_photo)}}" class="card-img-top" alt="...">
           </a>
             <div class="card-body product-body" >

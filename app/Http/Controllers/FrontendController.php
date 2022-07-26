@@ -96,9 +96,20 @@ class FrontendController extends Controller
         return view('frontpage.frontend.frontend_product');
     }
 
+ 
+
+
     //single product
     public function productDetails($sku){
+
         $products = Product::where('sku', $sku)->firstOrFail();
+        $related_products = Product::where('category_id', $products->category_id)->where('id', '!=', $products->id)->get();
+        return view('backend.product.singleproduct',compact('products','related_products'));
+    }
+
+    //single product details view
+    public function productDetailsView($id){
+        $products = Product::where('id', $id)->firstOrFail();
         $related_products = Product::where('category_id', $products->category_id)->where('id', '!=', $products->id)->get();
         return view('backend.product.singleproduct',compact('products','related_products'));
     }

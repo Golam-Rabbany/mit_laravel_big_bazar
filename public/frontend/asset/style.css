@@ -1,87 +1,81 @@
-*{
+* {
     margin: 0;
     padding: 0;
     outline: none;
 }
-body{
+body {
     margin: 0;
     padding: 0;
     outline: none;
 }
 
-p{
+p {
     font-size: 17px;
 }
 
-
-@media(max-width: 992px){
-    #header .header-last{
+@media (max-width: 992px) {
+    #header .header-last {
         display: none;
     }
 }
-@media(max-width: 992px){
-    #header .header-nav{
+@media (max-width: 992px) {
+    #header .header-nav {
         display: none;
     }
 }
-@media(max-width: 700px){
-    .header-search input{
-       width: 20px;
+@media (max-width: 700px) {
+    .header-search input {
+        width: 20px;
     }
 }
-@media(max-width: 700px){
-    #search-input{
+@media (max-width: 700px) {
+    #search-input {
         width: 250px;
     }
 }
-@media(max-width: 768px){
-    #search-bm{
+@media (max-width: 768px) {
+    #search-bm {
         display: none;
     }
 }
 
-
-
-.owl-sub-banner .sub-banner-span{
+.owl-sub-banner .sub-banner-span {
     position: absolute;
     padding: 10px 20px;
 }
-.owl-carousel-brand .item img{
-    width: 68%!important;
+.owl-carousel-brand .item img {
+    width: 68% !important;
 }
-.owl-sub-banner .sub-banner-span2{
+.owl-sub-banner .sub-banner-span2 {
     top: 20px;
     right: 105px;
 }
-.owl-sub-banner .sub-banner-span1{
+.owl-sub-banner .sub-banner-span1 {
     top: 20px;
     left: 85px;
 }
-.sub-banner-span-body1{
+.sub-banner-span-body1 {
     font-weight: bold;
     font-size: 20px;
 }
-@media(max-width: 992px){
-    .sub-banner-span-body1{
-        font-weight:normal;
+@media (max-width: 992px) {
+    .sub-banner-span-body1 {
+        font-weight: normal;
     }
 }
-.sub-banner-span-body2{
+.sub-banner-span-body2 {
     font-weight: bold;
     font-size: 20px;
 }
-.sub-banner-span-body3{
+.sub-banner-span-body3 {
     font-weight: bold;
     font-size: 20px;
 }
 
-
-
-
-#choose{
+#choose {
     margin-top: 2rem;
 }
-.choose-row{
+.choose-row {
     background-color: #ebebeb;
     display: flex;
     justify-content: center;
@@ -89,11 +83,11 @@ p{
     padding: 20px 0;
     border-radius: 10px;
 }
-@media(max-width: 700px){
-    .choose-row{
+@media (max-width: 700px) {
+    .choose-row {
     }
 }
-.choose-body i{
+.choose-body i {
     padding: 10px;
     background-color: #84c225;
     height: 3rem;
@@ -104,27 +98,25 @@ p{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-
 }
-.choose-text{
+.choose-text {
     line-height: 22px;
-    margin-left: 10px;;
+    margin-left: 10px;
 }
-
 
 #category {
     margin: 3rem 0;
 }
-#category .container{
+#category .container {
     border-top: 0.1px solid rgb(225, 225, 225);
 }
-#category .row{
+#category .row {
     margin-top: 1rem;
 }
-.category-col{
+.category-col {
     border: 0.5px solid #e5e5e5;
 }
-.category-body h6{
+.category-body h6 {
     position: absolute;
     left: 0;
     right: 0;
@@ -133,68 +125,59 @@ p{
     top: 10px;
     margin: 0 8px;
 }
-.category-body img{
+.category-body img {
     margin-top: 4rem;
     margin-bottom: 2rem;
     cursor: pointer;
 }
 
-
-
-
-
-
 #product {
     margin: 3rem 0;
 }
-#product .container{
+#product .container {
     border-top: 0.1px solid rgb(225, 225, 225);
 }
-#product .product-card{
+#product .product-card {
     margin: 0 auto;
 }
-#product .product-card img{
+#product .product-card img {
     cursor: pointer;
 }
-#product .product-body{
+#product .product-body {
     background-color: #f3f3f3;
     margin-top: -2rem;
 }
-#product .product-selece select{
+#product .product-selece select {
     height: 33px;
     font-size: 14px;
 }
-#product .product-button{
-    padding: 5px 15px; 
-    border:none; 
-    background:#84c225;
+#product .product-button {
+    padding: 5px 15px;
+    border: none;
+    background: #84c225;
     color: #fff;
     font-size: 15px;
 }
-#product .product-button:hover{
+#product .product-button:hover {
     background: #e5e5e5;
     color: #84c225;
 }
-#product .product-input{
-    
+#product .product-input {
     height: 28px;
     font-size: 13px;
-    width:48px; 
+    width: 48px;
 }
-
-
-
 
 #fruit {
     margin: 3rem 0;
 }
-#fruit .container{
+#fruit .container {
     border-top: 0.1px solid rgb(225, 225, 225);
 }
-#fruit .row{
+#fruit .row {
     margin-top: 1rem;
 }
-#fruit .tag{
+#fruit .tag {
     position: absolute;
     right: 15px;
     font-weight: bold;
@@ -207,7 +190,7 @@ p{
     padding: 2px;
     z-index: 6;
 }
-#fruit h5{
+#fruit h5 {
     font-size: 22px;
     position: absolute;
     top: 0px;
@@ -216,51 +199,41 @@ p{
     z-index: 1;
     text-align: center;
 }
-#fruit .fruit-img{
+#fruit .fruit-img {
     margin: 0 0px 16px;
     padding: 0;
     border: 1px solid #ebebeb;
     border-radius: 5px;
     cursor: pointer;
 }
-#fruit .fruit-img img{
+#fruit .fruit-img img {
     margin: 0 auto;
 }
-.fruit-button{
+.fruit-button {
     text-align: center;
-    
 }
-.fruit-button button{
+.fruit-button button {
     padding: 8px 20px;
     background-color: #f2f2f2;
     color: #555;
     border: none;
 }
-.fruit-button button:hover{
-    background-color:#84c225;
+.fruit-button button:hover {
+    background-color: #84c225;
     color: #fff;
     border-radius: 10px;
 }
 
-
-
-
-
-
-
-
-
-
 #grocery {
     margin: 3rem 0;
 }
-#grocery .container{
+#grocery .container {
     border-top: 0.1px solid rgb(225, 225, 225);
 }
-#grocery .row{
+#grocery .row {
     margin-top: 1rem;
 }
-#grocery h5{
+#grocery h5 {
     font-size: 22px;
     position: absolute;
     top: 0px;
@@ -269,155 +242,153 @@ p{
     z-index: 1;
     text-align: center;
 }
-.grocery-body{
+.grocery-body {
     margin: 0 auto;
 }
-#grocery .grocery-img{
+#grocery .grocery-img {
     border: 1px solid #ebebeb;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.grocery-button{
+.grocery-button {
     text-align: center;
-    
 }
-.grocery-button button{
+.grocery-button button {
     padding: 8px 20px;
     background-color: #f2f2f2;
     color: #555;
     border: none;
 }
-.grocery-button button:hover{
-    background-color:#84c225;
+.grocery-button button:hover {
+    background-color: #84c225;
     color: #fff;
     border-radius: 10px;
 }
 
-
-#popular{
+#popular {
     margin: 3rem;
 }
-#popular h4{
+#popular h4 {
     margin-bottom: 1rem;
 }
-#popular .container{
+#popular .container {
     border-top: 0.1px solid rgb(225, 225, 225);
 }
-#popular .row{
+#popular .row {
     margin-top: 1rem;
 }
-#popular .row .col{
+#popular .row .col {
     cursor: pointer;
     opacity: 0.7;
 }
-#popular .row .col:hover{
+#popular .row .col:hover {
     opacity: 1;
 }
 
-
-
-
-#footer{
+#footer {
     margin: 3rem 0;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
-@media(max-width: 592px){
-    #footer .footer-row{
-         text-align: center;
+@media (max-width: 592px) {
+    #footer .footer-row {
+        text-align: center;
     }
 }
-#footer .footer-row ul{
+#footer .footer-row ul {
     list-style: none;
 }
-#footer .footer-row h4{
-    margin-bottom:1rem;
+#footer .footer-row h4 {
+    margin-bottom: 1rem;
 }
-#footer .footer-row ul li{
-    margin-top: 7px
+#footer .footer-row ul li {
+    margin-top: 7px;
 }
-#footer .footer-row ul li:hover{
-    list-style:disc;
+#footer .footer-row ul li:hover {
+    list-style: disc;
     margin-left: 15px;
-    transition: 0.7s
+    transition: 0.7s;
 }
-#footer .footer-row ul li a{
+#footer .footer-row .footer-ul-address li:hover {
+    list-style: none;
+    margin-left: 0px !important;
+}
+#footer .footer-row .footer-ul-address li {
+    font-size: 14px;
+    color: rgb(123, 123, 123);
+}
+
+#footer .footer-row ul li a {
     text-decoration: none;
     color: rgb(123, 123, 123);
     font-size: 14px;
 }
 
-
-
-#subscribe{
-    
+#subscribe {
 }
-#subscribe .subscribe-row{
+#subscribe .subscribe-row {
     background-color: #f2f2f2;
     padding: 2rem 1.8rem;
     border-radius: 10px;
 }
-#subscribe h3{
+#subscribe h3 {
     font-size: 22px;
 }
-#subscribe .subscribe-row input{
-    width: 30rem!important;
+#subscribe .subscribe-row input {
+    width: 30rem !important;
     border: 1px solid #84c225;
 }
-@media(max-width: 1206px){
-    #subscribe .subscribe-body{
+@media (max-width: 1206px) {
+    #subscribe .subscribe-body {
         flex-wrap: wrap;
     }
 }
-@media(max-width: 1206px){
-    #subscribe .subscribe-row input{
-        width: 15rem!important;
+@media (max-width: 1206px) {
+    #subscribe .subscribe-row input {
+        width: 15rem !important;
     }
 }
-@media(max-width: 600px){
-    #subscribe .subscribe-row input{
-        width: 11rem!important;
+@media (max-width: 600px) {
+    #subscribe .subscribe-row input {
+        width: 11rem !important;
     }
 }
-#subscribe .subscribe-row input::placeholder{
+#subscribe .subscribe-row input::placeholder {
     float: left;
     color: #84c225;
     font-size: 15px;
 }
-#subscribe .subscribe-row .subscribe-btn{
+#subscribe .subscribe-row .subscribe-btn {
     background-color: #84c225;
     color: #fff;
     margin-left: 1rem;
-    padding: 5px 15px ;
+    padding: 5px 15px;
 }
 
-
-#payment{
+#payment {
     margin-top: 3rem;
 }
-#payment .row-payment h4{
+#payment .row-payment h4 {
     font-size: 22px;
-
 }
-#payment .row-payment ul li{
+#payment .row-payment ul li {
     list-style: none;
 }
-#payment .payment-card li{
+#payment .payment-card li {
     margin: 0 5px;
     font-size: 2.5rem;
-    
 }
-#payment .payment-card li a{
+#payment .payment-card li a {
     color: #84c225;
 }
-#payment .payment-app li{
+#payment .payment-app li {
     margin: 0 5px;
 }
-#payment .payment-logo li{
+#payment .payment-logo li {
     margin: 0 5px;
     font-size: 20px;
 }
-#payment .payment-logo li a{
+#payment .payment-logo li a {
     font-size: 18px;
     border: 1px solid #e5e5e5;
     border-radius: 5px;
@@ -429,28 +400,17 @@ p{
     text-decoration: none;
     color: #84c225;
 }
-@media(max-width: 992px){
-    #payment .payment-col{
-
+@media (max-width: 992px) {
+    #payment .payment-col {
     }
 }
 
-
-#last-footer .last-footer-row{
+#last-footer .last-footer-row {
     border-top: 0.2px solid rgb(212, 212, 212);
 }
-#last-footer .last-footer-row h6{
+#last-footer .last-footer-row h6 {
     text-align: center;
     margin: 1rem 0;
     font-size: 14px;
     color: rgb(103, 103, 103);
 }
-
-
-
-
-
-
-
-
-

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -40,19 +42,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request, [
-            'address'=>'required',
-            'phone'=>'required',
-        ]);
-
-        $orders = new Order();
-        $orders->address = $request->address;
-        $orders->name = Auth::user()->name;
-        $orders->email = Auth::user()->email;
-        $orders->phone = $request->phone;
-        $orders->save();
-
-        return back();
     }
 
     /**
@@ -99,4 +88,43 @@ class OrderController extends Controller
     {
         //
     }
+
+
+    public function checkout(){
+        $cart = Session::get('cart', []);
+
+        $products = Product::select(['id','product_title','sale_price','product_photo'])
+            ->whereIn('id', array_column($cart, 'product_id'))->get()->keyBy('id');
+
+        $carts= collect($cart)->map(function ($data) use ($products) {
+            $data['product'] = $products[$data['product_id']];
+            return $data;
+        });
+
+        return view('frontend.checkout.index',compact('carts'));
+    }
+
+    public function orderdetails(Request $request){
+        
+        return 
+
+        $this->validate($request, [
+            'address'=>'required',
+            'phone'=>'required',
+        ]);
+
+        $orders = new Order();
+        $orders->address = $request->address;
+        $orders->name = Auth::user()->name;
+        $orders->email = Auth::user()->email;
+        $orders->phone = $request->phone;
+        $orders->total_cost = $request->total_cost;
+        $orders->payment_method = $request->payment;
+        $orders->delivary_method = $request->delivary;
+        $orders->save();
+        return back();
+    }
+
+
+
 }

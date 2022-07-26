@@ -36,6 +36,7 @@ Route::get('demo/product/{id}', [FrontendController::class, 'catProduct'])->name
 
 //single product
 Route::get('product/single/{sku}', [FrontendController::class, 'productDetails'])->name('singleProduct');
+Route::get('product/details/{id}', [FrontendController::class, 'productDetailsView'])->name('product.details');
 Route::get('singleGrocery/{slug}', [FrontendController::class, 'groceryProduct'])->name('singleGrocery');
 
 Route::get('/productPage', function () {
@@ -76,25 +77,29 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('/demoproduct', DemoproductController::class);
 
-    //add to cart
-    Route::post('cart/add', [CartController::class, 'store'])->name('cart.add');
-
+    
 });
 
 
 
+//add to cart
+Route::post('cart/add', [CartController::class, 'store'])->name('cart.add');
 
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
 
 // cart
 Route::resource('cart',CartController::class);
+Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
 
+//checkout
+Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
 
 //order
 Route::resource('/order', OrderController::class);
+Route::post('order/details', [OrderController::class, 'orderdetails'])->name('order.details');
 
 
-//demo
+
 
 
 

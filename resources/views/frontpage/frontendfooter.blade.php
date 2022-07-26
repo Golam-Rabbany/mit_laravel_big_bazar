@@ -43,12 +43,12 @@
             </div>
             <div class="col-sm-6 col-xs-6 col-md-4 col-lg-1/5 mb-3">
             <h4>Contacts</h4>
-            <ul style="padding: 0;">
-                <li><a href="">600, Big market Site Designs</a></li>
-                <li><a href="">custom Boltacusta avenue apt.</a></li>
-                <li><a href="">Mesa,California</a></li>
-                <li><a href="">info@customdesign.com</a></li>
-                <li><a href="">(+91) 12-3456-7890</a></li>
+            <ul class="footer-ul-address" style="padding: 0;">
+                <li>600, Big market Site Designs</li>
+                <li>custom Boltacusta avenue apt.</li>
+                <li>Mesa,California</li>
+                <li>info@customdesign.com</li>
+                <li>(+91) 12-3456-7890</li>
             </ul>
             </div>
         </div>

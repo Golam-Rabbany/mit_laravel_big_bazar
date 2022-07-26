@@ -69,9 +69,9 @@
 <section id="header">
     <div class="container flex justify-between">
       <div class="items-center mr-2">
-        <img src="{{asset('uploads/header/'.$header->logo) }}" class="img-fluid mb-2" alt="not found">
+        <a href="{{url('/')}}"><img src="{{asset('uploads/header/'.$header->logo) }}" class="img-fluid mb-2" alt="not found"></a>
       </div>
-      <div class="header-nav flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
+      <div class="header-nav flex bg-slate-300 items-center cursor-pointer px-2 py-2 mr-2 rounded mb-3">
         <p class="leading-6">Shop by<br>category</p>
         <i class="fa fa-bars ml-3 px-3 py-0.5 rounded text-2xl text-gray-50" style="background-color: #84c225"></i> 
   
