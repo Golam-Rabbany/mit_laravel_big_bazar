@@ -1,6 +1,3 @@
-{{-- single product page --}}
-
-
 @extends('frontend.layouts.master')
 
 @section('content')
@@ -24,17 +21,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px flex justify-center items-center bg-slate-50">
-                <img src="{{asset('uploads/product/'.$products->product_photo)}}" class="w-3/5"  alt="">
+                <img src="{{asset('uploads/store/'.$stores->store_photo)}}" class="w-3/5"  alt="">
             </div>
             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="product-details-content quickview-content">
                     <div class="mt-3">
-                        <h2 class="text-3xl font-bold mt-3">{{$products->product_title}}</h2>
+                        <h2 class="text-3xl font-bold mt-3">{{$stores->store_name}}</h2>
                     </div>
                     <div class="mt-3 pricing-meta">
                         <ul class="flex  ">
-                            <li class="main-price "><del><a class="text-2xl text-red-500 font-bold" href="">${{$products->main_price}}</a></del></li>
-                            <li class="sale-price ml-5 "><a class="text-2xl text-red-500 font-bold" href="">${{$products->sale_price}}</a> </li>
+                            <li class="main-price "><a class="text-2xl text-red-500 font-bold" href="">$100</a></li>
+                            <li class="sale-price ml-5 "><a class="text-2xl text-red-500 font-bold" href="">{{$stores->offer}}{{$stores->quantity_way}} off</a> </li>
                         </ul>
                     </div>
                     <div class="mt-3 pro-details-rating-wrap flex">
@@ -48,15 +45,15 @@
                         <span class="read-review ml-4 text-xl text-amber-500"><a class="reviews" href="#">( 5 Customer Review )</a></span>
                     </div>
                     <div class="mt-3">
-                        <p class=" text-gray-500 text-xl">{{$products->short_desc}}</p>
+                        <p class=" text-gray-500 text-xl"></p>
                     </div>
                     <div class="mt-3 flex single_button  items-center">
-                        <form action="{{route('cart.store')}}" method="POST">
+                        <form action="" method="POST">
                             @csrf
             
-                            <input type="hidden" name="product_id" value="{{$products->id}}">
-                              <input type="hidden" name="product_title" value="{{$products->product_title}}">
-                              <input type="hidden" name="sale_price" value="{{$products->sale_price}}">
+                            <input type="hidden" name="product_id" value="">
+                              <input type="hidden" name="product_title" value="">
+                              <input type="hidden" name="sale_price" value="">
             
                             <div class="d-flex justify-content-between">
                               <div>
@@ -72,10 +69,10 @@
                         <i class="fa-solid fa-rotate px-6 py-2.5 text-xl ml-4 bg-gray-900 text-white rounded cursor-pointer  hover:bg-red-500 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"></i>
                     </div>
                     <div class="mt-3">
-                        <span class="text-xl font-bold ">SKU : </span><span class="text-xl text-gray-700">{{$products->sku}}</span>
+                        <span class="text-xl font-bold ">SKU : </span><span class="text-xl text-gray-700"></span>
                     </div>
                     <div class="mt-3">
-                        <span class="text-xl font-bold">Categories : </span><span class="text-xl text-gray-700">{{App\Models\Category::find($products->category_id)->category_name  }}</span>
+                        <span class="text-xl font-bold">Categories : </span><span class="text-xl text-gray-700"></span>
                     </div>
                     <div class="mt-3 pro-details-social-info pro-details-same-style d-flex">
                         <span class="text-xl">Share: </span>
@@ -116,34 +113,15 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                {{$products->long_desc}}
+                <p>Nothing added here</p>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-               {{$products->information}}
+                <p>Nothing added here</p>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">Suna ki jasse</div>
         </div>
     </div>
 </section>
-
-<section id="category">
-    <h4 class="mb-2 fs-3" style="text-align: center;">Related Product</h4>
-    <div class="container">
-      <div class="row justify-content-center">
-        @foreach ($related_products as $related_product)
-        <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2 p-2">
-          <div class="category-body category-col ">
-            <h6 class="text-center text-align-center">{{$related_product->product_title}}</h6>
-            <div class="w-100 d-flex justify-content-center">
-              <img class="mx-auto" src="{{asset('uploads/product/'.$related_product->product_photo)}}" alt="">
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-</section>
-
+    
 
 @endsection
-

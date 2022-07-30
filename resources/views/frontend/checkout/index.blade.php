@@ -40,9 +40,9 @@
         <tr>
           <td></td>
           <td></td>
-          <td></td>
-          <td>Sub Total Cost: </td>
-          <td>&#2547; {{$subtotal}}</td>
+          <td></td> 
+          <td class="fs-5 fw-bold">Sub Total Cost: </td>
+          <td class="fs-5 fw-bold">&#2547; {{$subtotal}}</td>
       </tr>
 
         <tr>
@@ -50,15 +50,15 @@
             <td></td>
             <td></td>
             <td>Delivery Charge : </td>
-            <td>&#2547; 60</td>
+            <td>&#2547;<input style="background-color:transparent!important; padding-left:5px" value="0" name="dalivary_charge"  type="text"  id="myData"></td>
         </tr>
         
         <tr>
           <td></td>
           <td></td>
           <td></td>
-          <th>Total Cost : </th>
-          <th>&#2547; {{$totalcost = $subtotal + 60}}</th>
+          <th class="fs-4 fw-bold">Total Cost : </th>
+          <th class="fs-4 fw-bold">&#2547; {{$totalcost = $subtotal + 60}}</th>
       </tr>
         
       </tbody>
@@ -77,7 +77,7 @@
                       <h2 class="fs-4 mb-2">Payment Method</h2>
                       <p class="py-2"> Select a Payment Method</p>
                       <span>
-                          <input type="radio" value="60" name="payment" id="payment-1">
+                          <input type="radio" value="cash-delivery" name="payment" id="payment-1">
                           <label for="cash ">Cash on Delivary</label>
                       </span><br>
                       <span>
@@ -93,11 +93,14 @@
                       <h2 class="fs-4 mb-2">Delivery Method</h2>
                       <p class="py-2">Select a Delivery Method</p>
                       <span>
-                          <input type="radio" value="home_delivary"  name="delivary" id="delivary-1">
+                        @php
+                          $delivary_charge =60;
+                        @endphp
+                          <input type="radio" value="{{$delivary_charge}}"  name="delivary"  id="selectValue" onchange="myFunction()">
                           <label for="cash">Home Delivary, Charge: &#2547; 60</label>
                       </span><br>
                       <span>
-                        <input type="radio" value="showroom_delivary" name="delivary" id="delivary-2">
+                        <input type="radio" value="0" name="delivary" id="selectValues" onchange="myFunctions()">
                         <label for="cash">Showroom Delivary, Charge: &#2547; 0</label>
                     </span>
                   </div>
@@ -134,4 +137,22 @@
         </div>
     </div>
   </section>
+
+
+
+<script>
+   function myFunction(){
+    var mydata=document.getElementById('myData');
+   var selectValue=document.getElementById('selectValue').value;
+     mydata.value=selectValue;
+   }
+
+   function myFunctions(){
+    var mydata=document.getElementById('myData');
+   var selectValues=document.getElementById('selectValues').value;
+     mydata.value=selectValues;
+   }
+</script>
+
+
 @endsection

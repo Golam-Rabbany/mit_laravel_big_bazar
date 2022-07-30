@@ -32,7 +32,7 @@
                         <form action="{{route('cart.destroy',$data['product_id'])}}" method="post">
                             @csrf 
                             @method('delete')
-                            <button type="submit" onclick="return confirm('Do you Want to Delete'))"> 
+                            <button type="submit" onclick="return confirm('Do you Want to Delete')"> 
                                 <i class="fa-solid fa-trash p-2 fs-3 cart-delete-btn" style="color:rgb(155, 2, 2); cursor: pointer;"></i>
                             </button>
                         </form>
@@ -45,7 +45,11 @@
                         <img src="{{asset('uploads/product/'.$data['product']->product_photo)}}" width="100px" height="100px" alt="">
                     </td>                 
                     <td>
-                        <input type="number" min="1" class="border pl-2" style="height: 70px; width:70px;" value="{{$data['quantity']}}" style="width: 50px!important">
+                        <form action="{{route('cart.update',$data['product_id'])}}" method="POST" id="form">
+                          @csrf()
+                          @method('put')
+                        <input name="quantity" type="number" onclick="form.submit()" min="1" class="border pl-2" style="height: 70px; width:70px;" value="{{$data['quantity']}}" style="width: 50px!important">
+                    </form>
                     </td>
                     <td>{{$data['product']->sale_price}}</td>
                     <th>{{$total_price = $data['product']->sale_price*$data['quantity']}}</th>
@@ -67,10 +71,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><button type="submit" class="btn bg-primary text-white">Update Cart</button></td>
-            
-                    <th>Sub Total : </th>
-                    <th>{{$subtotal}}</th>
+                    <th class="fs-5">Sub Total : </th>
+                    <td></td>
+                    <th class="fs-5">{{$subtotal}}</th>
                   </tr>
                   
                 </tbody>

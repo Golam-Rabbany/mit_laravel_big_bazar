@@ -15,6 +15,7 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DemoproductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductOrderController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -41,6 +42,11 @@ Route::get('singleGrocery/{slug}', [FrontendController::class, 'groceryProduct']
 
 Route::get('/productPage', function () {
 });
+
+//fruits  store
+Route::get('/store/singlestore/{id}', [StoreController::class, 'singlestore'])->name('single.store');
+
+
 
 
 Route::get('/dashboard', function () {
@@ -98,7 +104,8 @@ Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::resource('/order', OrderController::class);
 Route::post('order/details', [OrderController::class, 'orderdetails'])->name('order.details');
 
-
+//product_order
+Route::get('/productorder/{id}', [ProductOrderController::class, 'index'])->name('product.order');
 
 
 

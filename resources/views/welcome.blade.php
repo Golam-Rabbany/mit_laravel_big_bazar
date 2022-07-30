@@ -159,7 +159,9 @@
           @foreach (App\Models\Store::all() as $store)
             <div class="col-lg-4 col-md-4 col-sm-6 ">
               @if($store->offer)
+              <a href="{{route('single.store',$store->id)}}">
               <div class="fruit-img">
+                
                 <img src="{{asset('frontend/asset/img/salebg.png')}}" alt="" style="position: absolute; top:0; right:24px">
                 <p class="tag" style="margin-right: 10px;">
                   {{$store->offer}}<br>{{$store->quantity_way}}<br>off
@@ -167,11 +169,14 @@
                 <h5 class="">{{$store->store_name}}</h5>
                 <img class="d-flex mx-auto" src="{{asset('uploads/store/'.$store->store_photo)}}" alt="">
               </div>
+            </a>
               @else
+              <a href="{{route('single.store',$store->id)}}">
               <div class="fruit-img">
                 <h5 class="">{{$store->store_name}}</h5>
                 <img class="d-flex mx-auto" src="{{asset('uploads/store/'.$store->store_photo)}}" alt="">
               </div>
+              </a>
               @endif
             </div>   
           @endforeach

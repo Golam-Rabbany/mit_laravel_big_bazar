@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,18 @@ class OrderController extends Controller
 
     public function index()
     {
-        return view('frontend.order.index');
+        $cart = Session::get('cart', []);
+
+        $products = Product::select(['id','product_title','sale_price','product_photo'])
+            ->whereIn('id', array_column($cart, 'product_id'))->get()->keyBy('id');
+
+        $carts= collect($cart)->map(function ($data) use ($products) {
+            $data['product'] = $products[$data['product_id']];
+            return $data;
+        });
+
+        $order = Order::all();
+        return view('frontend.order.index',compact('carts','order'));
     }
 
     /**
@@ -106,13 +118,12 @@ class OrderController extends Controller
 
     public function orderdetails(Request $request){
         
-        return 
-
         $this->validate($request, [
             'address'=>'required',
             'phone'=>'required',
         ]);
-
+       
+       if(Auth::user()){
         $orders = new Order();
         $orders->address = $request->address;
         $orders->name = Auth::user()->name;
@@ -122,7 +133,24 @@ class OrderController extends Controller
         $orders->payment_method = $request->payment;
         $orders->delivary_method = $request->delivary;
         $orders->save();
+
+        foreach(Session::get('cart') as $item){
+              $product=new ProductOrder;
+              $product->order_id=$orders->id;
+              $product->product_id=$item['product_id'];
+              $product->quantity=$item['quantity'];
+              $product->save();
+        }
+        Session::forget('cart');
+        
         return back();
+
+
+       }else{
+        return redirect()->route('login');
+       }
+
+       
     }
 
 

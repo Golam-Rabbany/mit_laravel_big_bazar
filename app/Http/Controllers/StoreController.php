@@ -133,4 +133,10 @@ class StoreController extends Controller
         $store->delete();
         return back();
     }
+
+    public function singlestore($id){
+        $stores = Store::where('id', $id)->firstOrFail();
+        return view('backend.store.singlestore',compact('stores'));
+    }
+
 }

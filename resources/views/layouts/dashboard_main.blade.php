@@ -72,7 +72,7 @@
                                     </ul>
                                 </li>
 
-                                <li><a href=""><i class="fa-solid fa-arrow-up-9-1"></i>&emsp;Orders</a></li>
+                                <li><a href="{{route('order.index')}}"><i class="fa-solid fa-arrow-up-9-1"></i>&emsp;Orders</a></li>
 
                                 <li><a><i class="fa fa-table"></i>Banner<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
