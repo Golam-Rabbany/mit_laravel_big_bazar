@@ -9,9 +9,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('backend/dashboard/images/img.jpg') }}" type="image/ico" />
+    <link rel="shortcut icon" href="{{asset('uploads/profile/logo.png')}}" type="image/x-icon">
 
-    <title>Big Bazar Dashboard | </title>
+    <title>Big Market Dashboard | </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('backend/dashboard/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -36,6 +36,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- data table css --}}
+   @yield('datatable-css')
 </head>
 
 <body class="nav-md">
@@ -144,8 +146,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                    <a class="dropdown-item" href="javascript:;">
+                                    <a class="dropdown-item" href="{{route('profile.index')}}"> Profile</a>
+                                    <a class="dropdown-item" href="{{route('profile.index')}}">
                                         <span class="badge bg-red pull-right">50%</span>
                                         <span>Settings</span>
                                     </a>
@@ -296,6 +298,7 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('backend/dashboard/js/custom.min.js') }}"></script>
 
+    @yield('js')
 </body>
 
 </html>

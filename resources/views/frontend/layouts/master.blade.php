@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Bazar</title>
-    <link rel="shortcut icon" href="{{asset('frontend/asset/img/logo_main.png')}}" type="image/x-icon">
+    <title>Big Market</title>
+    <link rel="shortcut icon" href="{{asset('uploads/profile/logo.png')}}" type="image/x-icon">
 
     <!-- add css -->
     <link rel="stylesheet" href="{{asset('frontend/asset/style.css')}}">

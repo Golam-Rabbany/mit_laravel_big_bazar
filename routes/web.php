@@ -95,19 +95,15 @@ Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
 
 // cart
 Route::resource('cart',CartController::class);
-Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
 
 //checkout
 Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
 
 //order
 Route::resource('/order', OrderController::class);
+//checkout
 Route::post('order/details', [OrderController::class, 'orderdetails'])->name('order.details');
-
-//product_order
-Route::get('/productorder/{id}', [ProductOrderController::class, 'index'])->name('product.order');
-
-
+Route::delete('/product/order/delete/{id}', [OrderController::class, 'delete'])->name('product.order.delete');
 
 
 require __DIR__.'/auth.php';

@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if(session()->has('order_complete'))
+    <div class="alert alert-success">
+        {{ session()->get('order_complete') }}
+    </div>
+@endif
+
 <section class="mt-4">
 
 <table class="table table-success table-striped responsive">
@@ -33,7 +39,7 @@
               $subtotal = $subtotal + $sub_total;
           @endphp
         </tr>
-        @endforeach
+    @endforeach
 
         <form action="{{route('order.details')}}" method="POST">
           @csrf

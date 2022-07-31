@@ -64,7 +64,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=Order::with('ProductOrders')->where('id',$id)->first();
+
+        return view('backend.product_order.index',compact('data'));
     }
 
     /**
@@ -98,7 +100,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
 
@@ -116,6 +117,8 @@ class OrderController extends Controller
         return view('frontend.checkout.index',compact('carts'));
     }
 
+
+    //checkout option
     public function orderdetails(Request $request){
         
         $this->validate($request, [
@@ -143,8 +146,7 @@ class OrderController extends Controller
         }
         Session::forget('cart');
         
-        return back();
-
+        return back()->with('order_complete', 'Product Order Successfully Done!!');
 
        }else{
         return redirect()->route('login');
@@ -154,5 +156,10 @@ class OrderController extends Controller
     }
 
 
+    public function delete($id){
+        $del = Order::find($id);
+        $del->delete();
+        return back();
+    }
 
 }

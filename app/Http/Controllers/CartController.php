@@ -98,8 +98,4 @@ class CartController extends Controller
         return redirect()->back()->with('delete');
     }
 
-    public function updatecart()
-    {
-        return Session::get('cart');
-    }
 }
