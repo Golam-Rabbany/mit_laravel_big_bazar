@@ -1,6 +1,9 @@
 @extends('layouts.dashboard_main')
 
 @section('content')
+
+@can('all_show')
+
 <h2 style="color:brown"><span>Create Product </span>/ <a href="{{route('product.index')}}"> View Product</a></h2><br>
 <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
     @csrf   
@@ -49,4 +52,7 @@
 
     <button class="btn btn-info mt-3">Submit</button>
 </form>
+
+    
+@endcan
 @endsection

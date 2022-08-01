@@ -16,5 +16,9 @@ class Product extends Model
         return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
 
+    protected $fillable= [
+        'product_title', 'product_photo', 'sale_price', 'main_price', 'quantity',
+    ];
+
 
 }

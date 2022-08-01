@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+
 use App\Models\Demo;
-use App\Models\Demoproduct;
-use App\Models\Frontend;
-use App\Models\Grocery;
-use Illuminate\Http\Request;
 use App\Models\Logo;
+use App\Models\Grocery;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Frontend;
+use App\Models\Demoproduct;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class FrontendController extends Controller
 {
@@ -137,6 +141,15 @@ class FrontendController extends Controller
 
     public function productshow(){
         return view('backend.product.singleproduct');
+    }
+
+    public function testroute(){
+        // Role::create(['name' => 'User']);
+        // Permission::create(['name' => 'index']);
+        // $permission = Permission::find('3');
+        $role = Role::find('1');
+        $user = User::find('1');
+        $user->assignRole($role);
     }
 
 

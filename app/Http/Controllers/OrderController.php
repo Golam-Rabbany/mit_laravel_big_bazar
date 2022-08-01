@@ -118,7 +118,7 @@ class OrderController extends Controller
     }
 
 
-    //checkout option
+    //confirm order button
     public function orderdetails(Request $request){
         
         $this->validate($request, [

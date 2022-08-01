@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+
+@can('create')
+
+
     <div class="container">
         <div class="row">
             <table class="table table-hover" id="data_table">
@@ -51,6 +55,7 @@
             </table>
         </div>
     </div>
+    @endcan
 
     @section('js')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -61,6 +66,8 @@
             $('#data_table').DataTable();
         });
     </script>
+
+
     @endsection
 
 @endsection

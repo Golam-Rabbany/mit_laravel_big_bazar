@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ProductOrder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
     use HasFactory;
 
-    public function ProductOrders(){
+    public function ProductOrders(){ 
         return $this->hasMany(ProductOrder::class,'order_id','id');
     }
+    
 }

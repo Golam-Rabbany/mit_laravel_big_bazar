@@ -1,6 +1,10 @@
 @extends('layouts.dashboard_main')
 
 @section('content')
+
+@can('create')
+    
+
 <h2 style="color:brown"><span>Edit Banner </span>/ <a href="{{route('category.index')}}"> View Category</a></h2><br>
 @if(session()->has('message'))
     <div class="alert alert-success">
@@ -28,4 +32,7 @@
     </div>
     <button class="btn btn-info mt-3">Submit</button>
 </form>
+
+@endcan
+
 @endsection

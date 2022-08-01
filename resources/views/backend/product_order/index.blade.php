@@ -6,6 +6,9 @@
 
 @section('content')
 
+@can('create')
+  
+
 <table class="table" id="data_table">
     <thead class="thead-dark">
         <tr>
@@ -37,6 +40,7 @@
       
     </tbody>
   </table>
+  @endcan
 
   @section('js')
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -49,4 +53,5 @@
   </script>
   @endsection
     
+
 @endsection

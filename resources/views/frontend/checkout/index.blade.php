@@ -138,7 +138,7 @@
 
         <div class="form-button d-flex justify-content-end p-2">
           <button type="submit" class="btn bg-info text-white text-lg">Confirm Order</button>
-      </div>
+        </div>
     </form>
         </div>
     </div>

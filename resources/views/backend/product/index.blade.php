@@ -1,6 +1,10 @@
 @extends('layouts.dashboard_main')
 
 @section('content')
+
+@can('create')
+
+
 <h2 style="color:brown"><span>Edit Product </span>/ <a href="{{route('product.create')}}"> Create Product</a></h2><br>
 <table class="table">
     <thead class="thead-dark">
@@ -51,4 +55,8 @@
       
     </tbody>
   </table>
+
+    
+@endcan
+
 @endsection

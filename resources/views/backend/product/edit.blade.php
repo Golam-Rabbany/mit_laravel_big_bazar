@@ -1,6 +1,9 @@
 @extends('layouts.dashboard_main')
 
 @section('content')
+
+@can('create')
+
 <h2 style="color:brown"><span>Create Product </span>/ <a href="{{route('product.index')}}"> View Product</a></h2><br>
 <form action="{{route('product.update',$product->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -29,4 +32,8 @@
 
     <button class="btn btn-info mt-3">Submit</button>
 </form>
+
+    
+@endcan
+
 @endsection

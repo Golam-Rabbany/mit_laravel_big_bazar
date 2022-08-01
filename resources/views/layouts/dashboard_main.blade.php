@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +40,7 @@
 </head>
 
 <body class="nav-md">
+
      <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
@@ -62,6 +62,10 @@
                     <!-- /menu profile quick info -->
 
                     <br />
+
+
+@can('create')
+
 
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -127,6 +131,8 @@
                         </div>
 
                     </div>
+                    
+@endcan
 
                 </div>
             </div>
@@ -299,6 +305,10 @@
     <script src="{{ asset('backend/dashboard/js/custom.min.js') }}"></script>
 
     @yield('js')
+
+
+
 </body>
+
 
 </html>

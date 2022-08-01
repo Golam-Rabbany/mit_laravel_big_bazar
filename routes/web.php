@@ -108,3 +108,7 @@ Route::delete('/product/order/delete/{id}', [OrderController::class, 'delete'])-
 
 require __DIR__.'/auth.php';
 
+
+//role permission
+Route::get('/test', [FrontendController::class, 'testroute']);
+
