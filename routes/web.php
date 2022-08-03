@@ -19,7 +19,7 @@ use App\Http\Controllers\ProductOrderController;
 
 // Route::get('/', function () {
 //     return view('welcome');
-// });
+// }); 
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,8 +28,8 @@ Route::get('/', function () {
 
 
 //cat product
-Route::get('product-show/{id}', [FrontendController::class, 'allproduct'])->name('product.allproduct');
-Route::get('show/product/{id}', [FrontendController::class, 'productshow'])->name('show.product');
+Route::get('category_product/{id}', [FrontendController::class, 'allproduct'])->name('product.allproduct');
+// Route::get('show/product/{id}', [FrontendController::class, 'productshow'])->name('show.product');
 //demo cat product
 Route::get('demo/product/{id}', [FrontendController::class, 'catProduct'])->name('demo.product');
 
@@ -101,6 +101,8 @@ Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
 
 //order
 Route::resource('/order', OrderController::class);
+
+Route::get('/user_order', [OrderController::class, 'user_order'])->name('order.user_order');
 //checkout
 Route::post('order/details', [OrderController::class, 'orderdetails'])->name('order.details');
 Route::delete('/product/order/delete/{id}', [OrderController::class, 'delete'])->name('product.order.delete');

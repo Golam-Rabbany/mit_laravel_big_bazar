@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Market</title>
+    <link rel="shortcut icon" href="{{asset('uploads/profile/logo.png')}}" type="image/x-icon">
 
     <!-- add css -->
     <link rel="stylesheet" href="{{asset('frontend/asset/style.css')}}">
@@ -22,6 +23,11 @@
 
   {{-- tailwind --}}
   <script src="https://cdn.tailwindcss.com"></script>
+
+{{-- sweet alert2 --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+
 <style>
   @media (min-width: 992px) {
     .col-lg-1\/5 {
@@ -36,26 +42,76 @@
 </head>
 <body>
 
-
 @php
   $header = App\Models\Header::first();
 @endphp
 
 
+<section class="mb-3">
+    <div class="container flex justify-between" style="border-bottom: 0.5px solid rgb(224, 224, 224)" >
+      <div class="mt-2 mb-2">
+        <ul class="flex">
+          <li class="px-2 py-1 text-sm"><a href=""><i class="fa-solid fa-flag"></i><span class="hidden sm:inline-flex pl-1"> Country</span></a></li>
+          <li class="px-2 py-1 text-sm"><a href=""><i class="fa-solid fa-indian-rupee-sign"></i><span  class="hidden sm:inline-flex pl-1"> Currency</span></a></li>
+        </ul>
+      </div>
+      <div class="mt-2 mb-2">
+        <ul class="flex">
+          <li class="px-2 py-1 text-sm"><a href=""><i class="fa-solid fa-phone"></i><span class="hidden sm:inline-flex pl-1"> {{$header->number}}</span></a></li>
+          <li class="px-2 py-1 text-sm"><a href="{{route('login')}}"><i class="fa-solid fa-person-breastfeeding"></i><span> Login</span></a></li>
+          <li class="px-2 py-1 text-sm"><a href="{{route('register')}}"><i class="fa-solid fa-user-plus"></i><span> Sign Up</span></a></li>
+        </ul>
+      </div>
+    </div>
+</section>
 
-@include('frontpage.frontendheader')
 
-@yield('my_frontpage')
+<section id="header">
+    <div class="container md:flex flex-row justify-between">
+      <div class="items-center mr-2 justify-center">
+        <a href="{{url('/')}}"><img src="{{asset('uploads/header/'.$header->logo) }}" class="img-fluid mb-2" alt="not found"></a>
+      </div>
+      <div class="header-nav flex bg-slate-300 items-center cursor-pointer px-2 py-2 mr-2 rounded mb-3">
+        <p class="leading-6">Shop by<br>category</p>
+        <i class="fa fa-bars ml-3 px-3 py-0.5 rounded text-2xl text-gray-50" style="background-color: #84c225"></i> 
+  
+      </div>
+      <div class="header-search mr-2 mb-2">
+        <div class="block">
+          <div class="flex items-center justify-center">
+            <input type="text" id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg" autocomplete="off">            <i class="fa-solid fa-magnifying-glass p-[11px] cursor-pointer rounded-r text-gray-50" style="background-color: #84c225;"></i>
+          </div>
+          <div id="search-bm" class="flex text-uppercase my-1"> 
+            <div class="items-center mr-4"><i class="fa-regular fa-id-badge text-amber-600"></i><span class="text-amber-500"> bm offere</span></div>
+            <div class="items-center mr-4"><i class="fa-solid fa-certificate text-purple-600"></i><span class="text-purple-600"> bm express</span></div>
+            <div class="items-center mr-4"><i class="fa-regular fa-id-badge text-green-500"></i><span  class="text-green-500"> bm speciality</span></div>
+            <div class="items-center mr-4"><i class="fa-solid fa-sack-dollar text-blue-600"></i><span class="text-blue-600"> bm store</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="header-last flex bg-slate-300 items-center px-2 py-2 mr-2 rounded mb-3">
+        <i class="fa-solid fa-basket-shopping text-3xl py-1" style="color: #84c225;"></i>
+       
+        <a href="{{route('cart.add')}}">
+          <p class="leading-6 ml-3">My Basket <br>Item <span>@if(Session::has('cart')){{count(Session::get('cart'))}}@else 0 @endif</span></p>
+     
+        </a>
+      </div>
+
+    </div>
+</section>
+
+
+@yield('content')
 
 @include('frontpage.frontendfooter')
-
-
 
 
 <!-- bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
   integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
@@ -130,10 +186,6 @@
     }
     })
 </script>
-
-
-
-
 
 
 </body>

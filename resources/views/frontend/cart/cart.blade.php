@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('layouts.frontend_main')
 <style>
     .cart-delete-btn:hover{
         background-color: green;
@@ -78,6 +78,7 @@
                   
                 </tbody>
             </table>
+            <div><a href="{{route('order.user_order')}}" class="btn btn-primary px-3 py-2" >See Your Orders</a></div>
 
             @if(Session::get('cart'))
             <div>

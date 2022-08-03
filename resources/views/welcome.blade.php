@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('layouts.frontend_main')
 @section('content')
   <section id="owl-carousel-id">
       <div class="owl-carousel owl-banner owl-theme">
@@ -16,7 +16,7 @@
       <div class="owl-carousel owl-sub-banner owl-theme">
         @foreach (App\Models\Banner::whereNotNull('sub_banner')->get() as $banner)
         <div class="item">
-          <div class="sub-banner-span sub-banner-span2">
+          <div class="sub-banner-span sub-banner-span2 hidden md:block">
             <span>Get </span><span style="font-weight: bold;">Chana Dal</span><br>
             <span class="sub-banner-span-body1">@ </span><span class="sub-banner-span-body2">20</span><span class="sub-banner-span-body3">$</span><br>
             <span>Shop for </span><span>$</span><span>500</span>

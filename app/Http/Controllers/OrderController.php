@@ -32,7 +32,7 @@ class OrderController extends Controller
         });
 
         $order = Order::all();
-        return view('frontend.order.index',compact('carts','order'));
+        return view('backend.order.order',compact('carts','order'));
     }
 
     /**
@@ -66,7 +66,7 @@ class OrderController extends Controller
     {
         $data=Order::with('ProductOrders')->where('id',$id)->first();
 
-        return view('backend.product_order.index',compact('data'));
+        return view('backend.order.index',compact('data'));
     }
 
     /**
@@ -140,13 +140,14 @@ class OrderController extends Controller
         foreach(Session::get('cart') as $item){
               $product=new ProductOrder;
               $product->order_id=$orders->id;
+              $product->user_id=Auth::user()->id;
               $product->product_id=$item['product_id'];
               $product->quantity=$item['quantity'];
               $product->save();
         }
         Session::forget('cart');
         
-        return back()->with('order_complete', 'Product Order Successfully Done!!');
+        return redirect()->route('order.user_order')->with('order_complete', 'Product Order Successfully Done!!');
 
        }else{
         return redirect()->route('login');
@@ -160,6 +161,12 @@ class OrderController extends Controller
         $del = Order::find($id);
         $del->delete();
         return back();
+    }
+
+    public function user_order(){
+           
+           $user_product=ProductOrder::where('user_id',Auth::user()->id)->get();
+        return view('frontend.order.user_order',compact('user_product'));
     }
 
 }

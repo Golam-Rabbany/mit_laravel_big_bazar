@@ -108,14 +108,14 @@ class FrontendController extends Controller
 
         $products = Product::where('sku', $sku)->firstOrFail();
         $related_products = Product::where('category_id', $products->category_id)->where('id', '!=', $products->id)->get();
-        return view('backend.product.singleproduct',compact('products','related_products'));
+        return view('frontend.product.single_product',compact('products','related_products'));
     }
 
     //single product details view
     public function productDetailsView($id){
         $products = Product::where('id', $id)->firstOrFail();
         $related_products = Product::where('category_id', $products->category_id)->where('id', '!=', $products->id)->get();
-        return view('backend.product.singleproduct',compact('products','related_products'));
+        return view('frontend.product.single_product',compact('products','related_products'));
     }
 
     //single grocery
@@ -131,7 +131,7 @@ class FrontendController extends Controller
     public function allproduct($id){
         $alldata = Category::where('id',$id)->with('product')->first();
      
-        return view('backend.product.allproduct',compact('alldata'));
+        return view('frontend.product.category_product',compact('alldata'));
     }
 
     public function catProduct($id){
@@ -139,9 +139,9 @@ class FrontendController extends Controller
         return view('backend.demo.singledemoproduct',compact('data'));
     }
 
-    public function productshow(){
-        return view('backend.product.singleproduct');
-    }
+    // public function productshow(){
+    //     return view('frontend.product.single_product');
+    // }
 
     public function testroute(){
         // Role::create(['name' => 'User']);

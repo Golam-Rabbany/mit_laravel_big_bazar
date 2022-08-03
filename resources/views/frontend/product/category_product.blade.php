@@ -1,7 +1,7 @@
 {{-- clik category to show all product  --}}
 
 
-@extends('frontend.layouts.master')
+@extends('layouts.frontend_main')
 @section('content')
 
 <section id="product">
